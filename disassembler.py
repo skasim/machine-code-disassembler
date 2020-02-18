@@ -31,6 +31,8 @@ def main():
 
 
 def get_r_type_instruction(l: list) -> str:
+    """Parses the binary list representation the binary string and returns the assembly language instruction
+    for R types"""
 
     opcode: str = func_codes.get(list_to_str(l[26:]))
     rs: str = get_register_from_decimal(binary_to_decimal_converter(list_to_str(l[6:11])))
@@ -41,6 +43,8 @@ def get_r_type_instruction(l: list) -> str:
 
 
 def get_i_type_instruction(l: list) -> str:
+    """Parses the binary list representation the binary string and returns the assembly language instruction
+    for I types"""
 
     opcode: str = op_codes_i_type.get(list_to_str(l[0:6]))
     rs: str = get_register_from_decimal(binary_to_decimal_converter(list_to_str(l[6:11])))
@@ -57,6 +61,8 @@ def get_i_type_instruction(l: list) -> str:
 
 
 def get_j_type_instruction(l: list) -> str:
+    """Parses the binary list representation the binary string and returns the assembly language instruction
+    for J types. Since address value is 26 bits, 2 bits are prepended for HEX conversion"""
 
     opcode: str = op_codes_j_type.get(list_to_str(l[0:6]))
     deepcopy_l = [i for i in list_to_str(l)]
@@ -75,6 +81,8 @@ def get_j_type_instruction(l: list) -> str:
 
 
 def binary_to_hex_converter(binary: str) -> str:
+    """Convert a binary string to HEX"""
+
     l: list = str_to_list(binary)
     hex_val: str = ''
 
@@ -94,6 +102,8 @@ def binary_to_hex_converter(binary: str) -> str:
 
 
 def binary_to_decimal_converter(binary: str) -> int:
+    """Convert a binary string to decimal"""
+
     l: list = str_to_list(binary)
     index = len(l) - 1
     tot: int = 0
@@ -105,6 +115,8 @@ def binary_to_decimal_converter(binary: str) -> int:
 
 
 def get_register_from_decimal(decimal: int) -> str:
+    """Return the register name for a provided decimal"""
+
     if decimal == 0:
         return '0'
     elif decimal == 1:
@@ -172,6 +184,8 @@ def get_register_from_decimal(decimal: int) -> str:
 
 
 def get_hex_value_from_decimal(decimal: int) -> str:
+    """Return hex values from the provided decimal"""
+
     if decimal == 10:
         return 'A'
     elif decimal == 11:
@@ -186,6 +200,8 @@ def get_hex_value_from_decimal(decimal: int) -> str:
         return 'F'
     else:
         return str(decimal)
+
+# Dictionaries for storing key values
 
 
 func_codes: dict = {
@@ -210,8 +226,11 @@ op_codes_j_type: dict = {
     '000011': 'jal',
 }
 
+# HELPER METHODS
+
 
 def key_exists(key: str, dictionary: dict):
+    """Check if a key exists in the given dictionary"""
 
     if key in dictionary.keys():
         return True
@@ -220,10 +239,14 @@ def key_exists(key: str, dictionary: dict):
 
 
 def str_to_list(binary: str) -> list:
+    """Convert string to a list"""
+
     return [i for i in binary]
 
 
 def list_to_str(l: list) -> str:
+    """Convert a list to a string"""
+
     binary: str = ''
     for i in l:
         binary += i
