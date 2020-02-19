@@ -36,7 +36,7 @@ def get_r_type_instruction(l: list) -> str:
 
     opcode: str = func_codes.get(list_to_str(l[26:]))
     rs: str = get_register_from_decimal(binary_to_decimal_converter(list_to_str(l[6:11])))
-    rt: str = get_register_from_decimal(binary_to_decimal_converter(list_to_str(l[12:16])))
+    rt: str = get_register_from_decimal(binary_to_decimal_converter(list_to_str(l[11:16])))
     rd: str = get_register_from_decimal(binary_to_decimal_converter(list_to_str(l[16:21])))
 
     return '%s %s, %s, %s' % (opcode, rd, rs, rt)
