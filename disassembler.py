@@ -27,7 +27,8 @@ def main():
         elif key_exists(opscode, op_codes_j_type):
             print('machine code instruction: %s \n' % (get_j_type_instruction(l)))
         else:
-            print("uh oh")
+            print("error: only following instructions are processed: add, and, or, sub, j, jal, jr, addi, andi, lw"
+                  "ori, sw")
 
 
 def get_r_type_instruction(l: list) -> str:
