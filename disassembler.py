@@ -219,12 +219,11 @@ op_codes_i_type: dict = {
     '100011': 'lw',
     '101011': 'sw',
     '000000': 'jr'
-
 }
 
 op_codes_j_type: dict = {
     '000010': 'j',
-    '000011': 'jal',
+    '000011': 'jal'
 }
 
 # HELPER METHODS
@@ -232,11 +231,7 @@ op_codes_j_type: dict = {
 
 def key_exists(key: str, dictionary: dict):
     """Check if a key exists in the given dictionary"""
-
-    if key in dictionary.keys():
-        return True
-    else:
-        return False
+    return key in dictionary.keys()
 
 
 def str_to_list(binary: str) -> list:
